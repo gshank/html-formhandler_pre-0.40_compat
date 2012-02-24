@@ -1,0 +1,25 @@
+This repo contains compatibility widgets and renderers that will render as close
+as possible to HTML::FormHandler 0.36003 but using HTML::FormHandler 0.40+.
+
+===============================================================================
+If you have custom Render::Simple renderers, you will need to use the 'ucc_widget'
+function from HTML::FormHandler::Render::Util, because the widget names have
+been changed to be camelcase, like the classes that implement them.
+
+Use MyApp::Render::Simple instead of HTML::FormHandler::Render::Simple;
+
+    with 'MyApp::Render::Simple';
+
+If you used the widget, include the 'MyApp::Form::Widget::Form::Simple' role in your form class
+and set the widget_name_space:
+
+    with 'MyApp::Form::Widget::Form::Simple';
+    has '+widget_name_space' => ( default => sub { ['MyApp::Form::Widget'] } );
+
+The 'widget_tags' hash is now named 'tags' in the Fields and 'form_tags' in the form.
+For compatibility the 'widget_tags' are being copied to the new places, but code should be converted.
+The 'get_tag' (etc) methods are the same, but 'get_tag' now returns '' when a tag is not defined, so
+'defined' checks need to be changed.
+
+Because of the change to get_tag, the 'wrapper_start' and 'wrapper_end' tags no longer work with
+to stop rendering the wrapping tag with ''. With the MyApp::Form::Widgets, set it to ' ' instead.
