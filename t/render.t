@@ -118,7 +118,6 @@ $form->process( $params );
 is_deeply( $form->field('starch')->input_without_param, [], 'checkbox group settings' );
 is( $form->field('starch')->not_nullable, 1, 'checkbox group settings' );
 is_deeply( $form->value->{starch}, [], 'checkbox group value' );
-$DB::single=1;
 is( $form->render_field( $form->field('number') ),
     '
 <div><label class="label" for="number">Number: </label><input type="text" name="number" id="number" value="0" /></div>

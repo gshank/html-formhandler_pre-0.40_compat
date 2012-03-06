@@ -10,7 +10,7 @@ Use MyApp::Render::Simple instead of HTML::FormHandler::Render::Simple;
 
     with 'MyApp::Render::Simple';
 
-If you used the widget, include the 'MyApp::Form::Widget::Form::Simple' role in your form class
+If you used the widgets, include the 'MyApp::Form::Widget::Form::Simple' role in your form class
 and set the widget_name_space:
 
     with 'MyApp::Form::Widget::Form::Simple';
